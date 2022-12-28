@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>조건문과 반복문</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app-3">
+    <p v-if="seen">
+      이제 나를 볼 수 있어요
+    </p>
+  </div>
+  <div id="app-4">
+    <ol>
+      <li v-for="todo in todos">
+        {{ todo.text }}
+      </li>
+    </ol>
+  </div>
+
+  <script>
+    const app3 = new Vue({
+      el: "#app-3",
+      data: {
+        seen: true,
+      }
+    })
+
+    const app4 = new Vue({
+      el: "#app-4",
+      data: {
+        todos: [
+          {text: "자바스크립트 배우기"},
+          {text: "vue 배우기"},
+          {text: "make money"},
+        ]
+      }
+    })
+  </script>
+</body>
+</html>

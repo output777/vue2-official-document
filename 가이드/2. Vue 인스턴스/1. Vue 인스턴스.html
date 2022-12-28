@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue 인스턴스</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <p>{{foo}}</p>
+    <button v-on:click="foo = 'baz'">change it</button>
+  </div>
+
+
+
+  <script>
+    const data = { a : 1};
+
+
+    // 화살표 함수 지양: 화살표 함수는 this를 가지지 않기 때문임.
+    const vm = new Vue({
+      data,
+      created: function() {   // created 훅은 인스턴스가 생성된 후에 호출됩니다.
+        console.log(`a is ${this.a}`);
+      }
+    })
+
+    console.log(vm.a)
+    console.log(vm.a === data.a)
+    
+    vm.a = 2;
+    console.log("data.a", data.a);
+
+    data.a = 3;
+    console.log("vm.a", vm.a);
+
+    vm.b = "hi";
+
+    const obj = {
+      foo: "bar",
+    }
+
+    Object.freeze(obj);
+
+    new Vue({
+      el: "#app",
+      data: obj,
+    })
+  </script>
+</body>
+</html>
